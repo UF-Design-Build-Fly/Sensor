@@ -9,7 +9,8 @@ void loop() {
 
   digitalWrite(switchPin, LOW);
   //Turns off LED because voltage going into Mosfet is 0V.
-  //This is below the gate threshold voltage 
+  //This is below the gate threshold voltage
+  delay(1000);
   //How long LED is off
 
   digitalWrite(switchPin, HIGH);
