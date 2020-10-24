@@ -14,10 +14,10 @@ void loop() {
   //How long LED is on.
 
   digitalWrite(switchPin, HIGH);
-  //Turns of LED because voltage going into Mosfet is 5V 
+  //Turns off LED because voltage going into Mosfet is 5V 
   //Connects resistor to ground (no current through LED)
   //This is above the gate threshold voltage (4V)
   delay(1000); 
-  //How long LED is on
+  //How long LED is off.
 
 }
