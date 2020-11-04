@@ -1,23 +1,31 @@
-const int switchPin = 10; //Digital Pin Controlling Mosfet Voltage
+const int GreenLEDPin = 10; //define which control signal is connected to a specific LED
+const int RedLEDPin = 11;
+const int BlueLEDPin = 12;
 
 void setup() {
-  pinMode(switchPin, OUTPUT);
+  pinMode(GreenLEDPin, OUTPUT);
+  pinMode(RedLEDPin, OUTPUT);
+  pinMode(BlueLEDPin, OUTPUT);
+  digitalWrite(RedLEDPin, LOW); //The LED's are wired 'active high', meaning a 'high' will turn the LED on
+  digitalWrite(GreenLEDPin, LOW);
+  digitalWrite(BlueLEDPin, LOW);
 
 }
 
 void loop() {
+  digitalWrite(RedLEDPin, HIGH);//Red LED turns on.
+  delay(200);
+  digitalWrite(RedLEDPin, LOW); //Red LED turns off.
+  delay(800);
 
-  digitalWrite(switchPin, LOW);
-  //Turns on LED because Mosfet open (Current goes through LED).
-  //This is below the gate threshold voltage.
-  delay(1000);
-  //How long LED is on.
+  digitalWrite(GreenLEDPin, HIGH);//Green LED turns on.
+  delay(200);
+  digitalWrite(GreenLEDPin, LOW);//Green LED turns off.
+  delay(800);
 
-  digitalWrite(switchPin, HIGH);
-  //Turns off LED because voltage going into Mosfet is 5V 
-  //Connects resistor to ground (no current through LED)
-  //This is above the gate threshold voltage (4V)
-  delay(1000); 
-  //How long LED is off.
+  digitalWrite(GreenLEDPin, HIGH);//Blue LED turns on.
+  delay(200);
+  digitalWrite(GreenLEDPin, LOW);//Blue LED turns off.
+  delay(800);
 
 }
