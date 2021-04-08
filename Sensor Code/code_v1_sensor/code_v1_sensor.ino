@@ -1,7 +1,7 @@
-const byte whiteLED = 12;
-const byte blueLED = 11;
-const byte redLED = 10;
-const byte pwmIN = 3;
+#define whiteLED 12
+#define blueLED 11
+#define redLED 10
+#define pwmIN 3
 float durationHI = 0;
 
 //Letter speed multiplier (default setting: A = 1).
