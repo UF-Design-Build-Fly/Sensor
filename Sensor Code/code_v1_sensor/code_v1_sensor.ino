@@ -1,18 +1,19 @@
 #define whiteLED 12
 #define blueLED 11
 #define redLED 10
-#define pwmIN 3
-float durationHI = 0;
+#define readPIN 3
+
+int state = 0;
 
 //Letter speed multiplier (default setting: A = 1).
 //Increasing A will increase the time dashes and dots take.
 //Decreasing A will decrease the time dashes and dots take.
-float A = 0.75;
+float A = 0.5;
 
 //Time between character and words multiplier (default setting: B = 1).
 //Increasing A will increase the time/space between words and letters.
 //Decreasing A will decrease the time/space between words and letters.
-float B = 0.5;
+float B = 0.25;
 
 /*
  * Morse Code settings: https://morsecode.world/international/translator.html
@@ -41,6 +42,7 @@ void setup() {
   pinMode(whiteLED, OUTPUT);
   pinMode(blueLED, OUTPUT);
   pinMode(redLED, OUTPUT);
+  pinMode(readPIN, INPUT);
   digitalWrite(whiteLED, LOW);
   digitalWrite(blueLED, LOW);
   digitalWrite(redLED, LOW);
@@ -49,8 +51,8 @@ void setup() {
 void loop() {
   
   //Change range for code to run according to signal output from carrier board in the plane.
-  durationHI = pulseIn(pwmIN, HIGH);
-  if ((durationHI < 1250 && durationHI > 750)) { 
+  state = digitalRead(readPIN);
+  if (state) { 
     letter_G();
     letter_O();
     delay(wordSpace);
@@ -63,7 +65,7 @@ void loop() {
     exclamation();
     delay(restart);
  }
- 
+ /*
  //Used for testing light outputs. 
  //Comment out when flying.
  letter_G();
@@ -77,6 +79,7 @@ void loop() {
  letter_S();
  exclamation();
  delay(restart);
+ */
 }
 
 void letter_G () { // - - .
@@ -121,7 +124,7 @@ void exclamation () { // - . - . - -
   dash('r');
 }
 void dash (char color) { // -
-  if (color == 'w') {
+  if (color == 'w') { 
     digitalWrite(whiteLED, HIGH);
     delay(dashHI);
     digitalWrite(whiteLED, LOW);
