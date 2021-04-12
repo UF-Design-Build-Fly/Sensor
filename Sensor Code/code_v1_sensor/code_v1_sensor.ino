@@ -29,6 +29,7 @@ uint16_t t1 = A*330; //Time (milliseconds) dash is HIGH: 330 is our default spee
 uint16_t t2 = B*1250; //Time for character space: 1250 is our default speed
 uint16_t restart = 1000; //Time in between end and beginning of pharse. Going from ! to G in "Go Gators!".
 
+//Constants determined empirically
 uint16_t dashHI = t1;
 uint16_t dashLO = 0.25 * t1;
 uint16_t dotHI = 0.363 * t1;
