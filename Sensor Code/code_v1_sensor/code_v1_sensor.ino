@@ -40,11 +40,10 @@ uint16_t wordSpace = 1.4 * t2;
 
 void setup() {
   //Serial.begin(9600);
-  //while(!Serial);
   pinMode(whiteLED, OUTPUT);
   pinMode(blueLED, OUTPUT);
   pinMode(redLED, OUTPUT);
-  pinMode(readPIN, INPUT);
+  //pinMode(readPIN, INPUT);
   digitalWrite(whiteLED, LOW);
   digitalWrite(blueLED, LOW);
   digitalWrite(redLED, LOW);
@@ -52,9 +51,10 @@ void setup() {
 
 void loop() {
   //Change range for code to run according to signal output from carrier board in the plane.
-  state = digitalRead(readPIN);
+  //state = digitalRead(readPIN);
+  state = pulseIn(readPIN, HIGH);
   Serial.println(state);
-  if (state == 1) { 
+  if (state >= 1200) { 
     letter_G();
     letter_O();
     delay(wordSpace);
